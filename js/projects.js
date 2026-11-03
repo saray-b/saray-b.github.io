@@ -1,0 +1,276 @@
+/* Un proyecto = un objeto en este arreglo. Para añadir otro, copia el bloque
+   de PLANTILLA que está al final del archivo y rellénalo. No hay que tocar
+   HTML ni CSS: la portada y la página de caso de estudio se generan solas.
+
+   Tipos de bloque disponibles dentro de cada capítulo:
+     { t: "p", text }                          párrafo (admite **negrita**)
+     { t: "ul", items: [] }                    lista
+     { t: "image", src, alt, caption, scroll } imagen con zoom (scroll: true = alta y desplazable)
+     { t: "pair", items: [{src, alt, caption}, {...}] }   dos imágenes lado a lado
+     { t: "compare", items: [{label, src, alt, caption}] } baja / media / alta fidelidad
+     { t: "phones", items: [{src, alt, caption}] }        pantallas móviles
+     { t: "colors", groups: [{name, items: [[nombre, "#hex"]]}] }
+     { t: "decisions", items: [{title, text}] }           decisiones de diseño
+     { t: "note", text }                                  nota destacada
+   Todo texto entre corchetes [así] se resalta en amarillo: son pendientes tuyos. */
+
+window.PROJECTS = [
+  {
+    slug: "evalua",
+    title: "Evalúa, exámenes en línea con supervisión",
+    short: "Evalúa",
+    summary:
+      "Plataforma web para presentar y administrar exámenes de selección con verificación de identidad y cámara: 89 pantallas, gestión de procesos de selección, tres niveles de fidelidad y un sistema de diseño.",
+    tags: ["UX/UI", "Producto web", "Sistema de diseño"],
+    year: "2026",
+    cover: "assets/evalua/hifi-inicio.webp",
+    ogImage: "assets/og-evalua.jpg",
+    coverAlt: "Página de inicio de Evalúa con foto de una persona presentando un examen y tres ilustraciones",
+    tldr: [
+      ["Problema", "Las pruebas de selección eran presenciales y se procesaban a mano: respuestas transcritas una a una y personas desplazándose a un sitio concreto."],
+      ["Mi rol", "Diseño UX/UI (flujos, wireframes, prototipos y sistema de diseño) y desarrollo frontend en React y Next.js, dentro de un equipo ágil."],
+      ["Resultado", "89 pantallas diseñadas y construidas. El equipo ahora lleva a cabo más procesos en menos tiempo y de una manera mucho más sencilla."],
+    ],
+    facts: [
+      ["Rol", "Diseño UX/UI y desarrollo frontend"],
+      ["Equipo", "Equipo ágil (Scrum)"],
+      ["Duración", "Desde enero de 2026 (en curso)"],
+      ["Herramientas", ["Figma", "React", "Next.js"]],
+      ["Año", "2026"],
+    ],
+    stats: [
+      ["89", "pantallas (59 escritorio, 30 móvil)"],
+      ["3", "niveles de fidelidad"],
+      ["2", "roles a la vez: diseño UX/UI y desarrollo frontend"],
+      ["2", "tipos de usuario: candidato y administración"],
+    ],
+    chapters: [
+      {
+        id: "contexto",
+        title: "El problema",
+        blocks: [
+          {
+            t: "p",
+            text: "**Evalúa** es una plataforma web para gestionar procesos de selección y evaluación de personal: una organización publica un proceso, invita a las personas aspirantes y estas presentan sus exámenes en línea, con supervisión remota por cámara.",
+          },
+          {
+            t: "p",
+            text: "Hay dos públicos con necesidades muy distintas. Quien presenta el examen necesita calma y claridad: cuánto tiempo queda, cuánto lleva respondido y si la grabación está activa. El equipo administrador necesita crear usuarios, exámenes, bancos de preguntas e invitaciones sin equivocarse.",
+          },
+          {
+            t: "ul",
+            items: [
+              "Un examen supervisado genera ansiedad: la interfaz no puede añadir incertidumbre.",
+              "Un examen de 170 preguntas tiene que poder recorrerse sin perderse.",
+              "La verificación de identidad (documento y foto) debe ser guiada, paso a paso.",
+              "Un panel de administración con 29 vistas tiene que sentirse como un solo sistema.",
+            ],
+          },
+          {
+            t: "p",
+            text: "**Mi rol.** Diseñé los flujos de usuario, los wireframes y los prototipos de alta fidelidad en Figma, aplicando Design Thinking para traducir necesidades reales en decisiones de interfaz. Después construí las interfaces responsivas en React y Next.js a partir de esos diseños, dentro de un equipo ágil.",
+          },
+          {
+            t: "p",
+            text: "**Cómo conocí a las personas usuarias.** El proyecto se desarrolló dentro de la entidad donde se aplicaban las pruebas, que hasta entonces eran presenciales. Eso me permitió hablar directamente con quienes las presentaban: con cuestionarios breves y conversaciones del día a día pregunté qué necesitaban y conocí un poco más a las personas detrás de cada examen.",
+          },
+          {
+            t: "p",
+            text: "**Y a quienes administran.** Una parte grande del proyecto está pensada para el equipo administrador, con quien trabajo de forma directa. En reuniones recogíamos sus necesidades, sobre todo cómo obtener los resultados de cada examen de manera más ágil y segura. Así pude conocer las necesidades de ambas partes.",
+          },
+          {
+            t: "p",
+            text: "**Un producto que creció.** Al principio el sistema asignaba exámenes uno por uno. Con el uso apareció una necesidad nueva: la entidad quería organizar todo por **procesos de selección**, con su paquete de exámenes, su cupo de aspirantes y su avance. Eso movió el centro del producto y obligó a rediseñar el listado de exámenes del candidato y buena parte de la administración.",
+          },
+          { t: "p", text: "**Lo que descubrimos**" },
+          {
+            t: "ul",
+            items: [
+              "Muchas personas presentarían el examen desde lugares con mala conectividad, así que hubo que pensar el producto para eso.",
+              "No todas tenían un computador o un equipo portátil a mano.",
+              "Quienes administraban transcribían a mano, respuesta por respuesta, extensos formularios a un archivo, con muchos usuarios y procesos a la vez.",
+              "Todas las personas, tanto quienes presentaban como quienes supervisaban, tenían que desplazarse a un sitio concreto.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "alcance",
+        title: "Alcance y flujos",
+        blocks: [
+          {
+            t: "p",
+            text: "El diseño cubre todo el recorrido, desde la página pública hasta la administración. En total son **59 vistas de escritorio** y **30 móviles**.",
+          },
+          {
+            t: "ul",
+            items: [
+              "**Público (6):** inicio, información, contacto y avisos de sesión cerrada, código expirado y código inválido.",
+              "**Autenticación (7):** inicio de sesión, error de credenciales, recuperación de contraseña en tres pasos y registro por invitación.",
+              "**Candidato (7):** exámenes agrupados por proceso, historial de intentos, filtros, notificaciones, perfil y centro de ayuda.",
+              "**Presentación del examen (4):** consentimiento, requisitos técnicos, verificación de identidad e instrucciones.",
+              "**Examen y resultados (6):** examen supervisado y extenso, confirmación, resultado y revisión de respuestas.",
+              "**Administración (29):** inicio, usuarios, **procesos** (listado, nuevo proceso y un detalle con seis pestañas), asignaciones directas, detalle de intento, exámenes, banco de preguntas, invitaciones y ajustes.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "proceso",
+        title: "Proceso: de la estructura al detalle",
+        blocks: [
+          {
+            t: "p",
+            text: "El proyecto avanza en tres niveles de fidelidad. **Baja:** esqueletos que fijan estructura y jerarquía sin distraer con contenido. **Media:** el texto real, en escala de grises, para comprobar longitudes, estados y flujos. **Alta:** color, imágenes e interacción sobre un sistema de diseño.",
+          },
+          {
+            t: "compare",
+            items: [
+              { label: "Baja fidelidad", src: "assets/evalua/lowfi-login.webp", alt: "Inicio de sesión en baja fidelidad: barras grises en lugar de texto", caption: "Estructura y jerarquía." },
+              { label: "Media fidelidad", src: "assets/evalua/midfi-login.webp", alt: "Inicio de sesión en media fidelidad: texto real en escala de grises", caption: "Contenido real, sin color." },
+              { label: "Alta fidelidad", src: "assets/evalua/hifi-login.webp", alt: "Inicio de sesión en alta fidelidad con foto y marca", caption: "Color, imagen y marca." },
+            ],
+          },
+          {
+            t: "compare",
+            items: [
+              { label: "Baja fidelidad", src: "assets/evalua/lowfi-examen.webp", alt: "Pantalla de examen en baja fidelidad", caption: "El examen: la pantalla más densa." },
+              { label: "Media fidelidad", src: "assets/evalua/midfi-examen.webp", alt: "Pantalla de examen en media fidelidad", caption: "Bloques, temporizador y progreso con contenido real." },
+              { label: "Alta fidelidad", src: "assets/evalua/hifi-examen.webp", alt: "Pantalla de examen en alta fidelidad con vista de cámara", caption: "Estados, foco y cámara visible." },
+            ],
+          },
+          {
+            t: "p",
+            text: "El archivo de Figma sigue el mismo orden: seis páginas (portada, sistema de diseño, baja, media y alta fidelidad, y responsive) con 59 vistas de escritorio y 30 móviles, para recorrer el proyecto de lo general a lo particular." },
+          {
+            t: "p",
+            text: "El producto se fue ajustando en iteraciones, a partir de la retroalimentación de las personas usuarias y del uso real.",
+          },
+          {
+            t: "p",
+            text: "**Un cambio concreto: el examen en bloques de cinco.** Las pruebas eran muy extensas y nos dimos cuenta de que quien las presenta podía perderse o sentirse saturado y abrumado ante tantas preguntas. Optamos por dividirlas en bloques de cinco, lo que además ayuda a ubicarse y a ver con facilidad qué preguntas faltan por responder.",
+          },
+        ],
+      },
+      {
+        id: "decisiones",
+        title: "Decisiones de diseño",
+        blocks: [
+          {
+            t: "decisions",
+            items: [
+              { title: "El examen en bloques de cinco", text: "170 preguntas se convierten en 34 bloques navegables, con un mapa lateral que muestra cuántas lleva respondidas cada bloque." },
+              { title: "La cámara siempre a la vista", text: "La vista de cámara y el indicador «Grabación en curso» permanecen visibles: la supervisión es transparente para quien presenta el examen." },
+              { title: "Estado con texto, no solo con color", text: "Habilitado, Programado y Vencido combinan color, etiqueta y botón deshabilitado, para que se entiendan sin depender del color." },
+              { title: "Un recorrido previo guiado", text: "Una barra de cuatro pasos (consentimiento, requisitos, identidad, instrucciones) deja claro dónde está la persona y qué falta." },
+              { title: "Confirmar antes de finalizar", text: "El diálogo de cierre resume cuántas preguntas se respondieron y deja claro que no se podrán modificar después." },
+              { title: "Un proceso reúne todo", text: "El proceso es la unidad de trabajo: su detalle junta aspirantes, exámenes finales, simulacros, asignaciones, invitaciones y auditoría en pestañas, y el candidato ve sus exámenes agrupados con el mismo orden." },
+              { title: "Un solo sistema para dos mundos", text: "Candidatos y administración comparten tokens, componentes y tipografía, aunque cada uno tiene su propio ritmo de pantalla." },
+            ],
+          },
+        ],
+      },
+      {
+        id: "alta",
+        title: "Alta fidelidad",
+        blocks: [
+          { t: "image", src: "assets/evalua/hifi-inicio.webp", alt: "Página de inicio completa", caption: "Página pública: propuesta, tres beneficios, el recorrido del examen y preguntas frecuentes.", scroll: true },
+          { t: "pair", items: [
+            { src: "assets/evalua/hifi-registro.webp", alt: "Registro por invitación, paso 1 de 2", caption: "Registro por invitación, paso 1 de 2: datos personales." },
+            { src: "assets/evalua/hifi-identidad.webp", alt: "Verificación de identidad con vista de cámara", caption: "Verificación de identidad en tres fotos, con una guía por cada paso." },
+          ] },
+          { t: "image", src: "assets/evalua/hifi-historial.webp", alt: "Exámenes con el historial de intentos desplegado", caption: "Exámenes del candidato, agrupados por proceso: simulacros y exámenes finales con estado, plazo y acción visibles, y el historial de intentos desplegado." },
+          { t: "pair", items: [
+            { src: "assets/evalua/hifi-procesos.webp", alt: "Listado de procesos de selección", caption: "Procesos: cada uno con su entidad, exámenes, aspirantes, periodo y estado." },
+            { src: "assets/evalua/hifi-proceso-detalle.webp", alt: "Detalle de un proceso con pestañas", caption: "Detalle de un proceso: resumen, aspirantes y seis pestañas de trabajo." },
+          ] },
+          { t: "pair", items: [
+            { src: "assets/evalua/hifi-intento-fotos.webp", alt: "Detalle de un intento con las fotos de verificación y la grabación de la sesión", caption: "Detalle de intento: resultado, fotos de verificación de identidad y grabación de la sesión." },
+            { src: "assets/evalua/hifi-intento.webp", alt: "Detalle de un intento con línea de tiempo", caption: "El mismo detalle en su pestaña de línea de tiempo." },
+          ] },
+          { t: "image", src: "assets/evalua/hifi-asignaciones.webp", alt: "Listado de asignaciones directas de exámenes", caption: "Asignaciones directas: exámenes asignados a candidatos individuales, con estado, progreso y calificación." },
+          { t: "image", src: "assets/evalua/hifi-crear-examen.webp", alt: "Formulario para crear un examen", caption: "Crear examen: calificación, qué ve el candidato, instrucciones y preguntas en un solo formulario.", scroll: true },
+        ],
+      },
+      {
+        id: "sistema",
+        title: "Sistema de diseño",
+        blocks: [
+          {
+            t: "p",
+            text: "Antes de dibujar las pantallas definí los fundamentos: los valores se midieron sobre la aplicación real (escritorio a 1422 × 739 px y móvil a 360 × 667 px) y quedaron como tokens enlazados a variables de Figma, en una colección propia. Son **10 tonos de marca, 12 neutros y 14 colores semánticos** (éxito, aviso, error e información), **16 estilos tipográficos** en Inter (de 9,5 a 19 px), **4 radios**, **3 sombras** y una escala de espaciado de 4 a 24 px.",
+          },
+          {
+            t: "colors",
+            groups: [
+              { name: "Marca", items: [["900","#0A142A"],["800","#151F3D"],["700","#332E7E"],["600","#3264FC"],["500","#5B85ED"],["400","#7FA0F2"],["300","#AEC3F6"],["200","#D6E1FB"],["100","#E9EFFD"],["50","#F4F7FD"]] },
+              { name: "Neutros", items: [["900","#0A142A"],["800","#1E2A44"],["700","#48526B"],["600","#626B82"],["500","#838BA0"],["400","#A6ACBC"],["300","#CBD0DC"],["200","#DEE2EA"],["150","#E7EAF1"],["100","#F1F3F8"],["50","#F4F7FD"],["0","#FDFDFD"]] },
+              { name: "Éxito", items: [["700","#0F8B3F"],["Fondo","#E6F8EB"],["Borde","#BEEACB"]] },
+              { name: "Aviso", items: [["700","#966A0B"],["600","#B8790F"],["Fondo","#FFF6E3"],["Borde","#F0DBA6"]] },
+              { name: "Error", items: [["700","#B23A30"],["600","#D64545"],["Fondo","#FDEBEA"],["Borde","#F3C4C0"]] },
+              { name: "Información", items: [["600","#3264FC"],["Fondo","#E9EFFD"],["Borde","#C6D5FA"]] },
+            ],
+          },
+          { t: "image", src: "assets/evalua/ds-tipografia.webp", alt: "Escala tipográfica en Inter: 16 estilos de 9,5 a 19 píxeles", caption: "Tipografía: 16 estilos en Inter, del título de diálogo (19 px) al encabezado de tabla (9,5 px), cada uno con su interlineado.", pad: "#F1F3F8" },
+          { t: "pair", items: [
+            { src: "assets/evalua/ds-radios.webp", alt: "Cuatro radios: control 5, tarjeta 8, panel 18 y píldora 999 píxeles", caption: "Radios: 5 px para controles, 8 para tarjetas, 18 para el panel de autenticación y píldora para insignias.", pad: "#F1F3F8" },
+            { src: "assets/evalua/ds-sombras.webp", alt: "Tres sombras: pequeña, grande y de diálogo", caption: "Sombras: una para tarjetas y campos, otra para paneles flotantes y otra para diálogos.", pad: "#F1F3F8" },
+          ] },
+          { t: "image", src: "assets/evalua/ds-espaciado.webp", alt: "Escala de espaciado de 4 a 24 píxeles y medidas del layout: barra lateral, cabecera, escritorio y móvil", caption: "Espaciado y layout: una escala de 4 a 24 px, barra lateral de 224 px y cabecera de 52 px.", pad: "#F1F3F8" },
+          { t: "image", src: "assets/evalua/ds-componentes.webp", alt: "Biblioteca de componentes: botones, campos, avisos, insignias, tarjeta de examen, diálogo y barra lateral", caption: "Componentes: botones, campos, avisos, estados, examen y estructura. Desplázate para verla completa.", scroll: true, pad: "#F1F3F8" },
+        ],
+      },
+      {
+        id: "responsive",
+        title: "Responsive",
+        blocks: [
+          {
+            t: "p",
+            text: "Las **30 vistas móviles** se diseñan a 360 × 667 px. El menú lateral pasa a un panel, los filtros a una hoja y el registro, de dos pasos en escritorio, se divide en **cuatro** para que cada pantalla pida pocos datos.",
+          },
+          {
+            t: "phones",
+            items: [
+              { src: "assets/evalua/movil-login.webp", alt: "Inicio de sesión móvil", caption: "Inicio de sesión" },
+              { src: "assets/evalua/movil-examenes.webp", alt: "Listado de exámenes en móvil", caption: "Exámenes" },
+              { src: "assets/evalua/movil-identidad.webp", alt: "Verificación de identidad en móvil", caption: "Verificación de identidad" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "resultado",
+        title: "Resultado y aprendizajes",
+        blocks: [
+          { t: "p", text: "Las interfaces se implementaron en **React y Next.js** a partir de los diseños, usando como base los tokens medidos de la aplicación real para que Figma y código hablen el mismo idioma." },
+          { t: "p", text: "El equipo quedó muy satisfecho: hoy se gestionan más procesos en menos tiempo y de forma mucho más sencilla." },
+          { t: "p", text: "**Lo que más me enseñó este proyecto es el valor de planificar.** En un sistema grande, con 89 pantallas, dos tipos de usuarios y flujos que dependen unos de otros, un cambio pequeño rara vez se queda donde nace: una pantalla se apoya en los datos que guarda, y esos datos alimentan a otras pantallas. Tocar una pieza puede mover todo el sistema." },
+          { t: "p", text: "Por eso aprendí a dedicar tiempo a plantear bien las necesidades antes de diseñar: quién usa el sistema, qué problema resuelve y qué no debe hacer. Con el objetivo claro, cada decisión se puede medir contra él, y es más fácil reconocer qué cambio suma y cuál solo agrega complejidad. Un buen planteamiento al inicio es más barato que corregir después, cuando ya hay mucho construido encima." },
+          { t: "p", text: "**Un error pequeño que me dejó una lección.** Al empezar, diseñé varias pantallas con textos de ejemplo muy cortos. Cuando llegó el contenido real (nombres largos de exámenes y descripciones extensas), los títulos y las tarjetas no cabían y tuve que reajustar el diseño. Desde entonces pruebo con contenido real y con los casos extremos desde el principio, no solo con el caso ideal." },
+          {
+            t: "note",
+            text: "**Sobre este caso.** Es una versión anonimizada: se reemplazaron nombres, marca, datos personales e imágenes originales. Las fotografías e ilustraciones fueron generadas con inteligencia artificial.",
+          },
+        ],
+      },
+    ],
+  },
+
+  /* ───────── PLANTILLA: copia, pega arriba de este comentario y rellena ─────────
+  {
+    slug: "mi-proyecto",               // se usa en la URL: project.html?p=mi-proyecto
+    title: "Título del proyecto",
+    short: "Nombre corto",
+    summary: "Una o dos frases con el resultado.",
+    tags: ["UX/UI", "Móvil"],          // los filtros de la portada salen de aquí
+    year: "2026",
+    cover: "assets/mi-proyecto/portada.png",
+    coverAlt: "Descripción de la imagen",
+    facts: [["Rol", "…"], ["Equipo", "…"], ["Duración", "…"], ["Herramientas", "…"], ["Año", "…"]],
+    stats: [["+30%", "qué mejoró"]],
+    chapters: [
+      { id: "problema", title: "El problema", blocks: [{ t: "p", text: "…" }] },
+    ],
+  },
+  ─────────────────────────────────────────────────────────────────────────── */
+];

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>try { if (localStorage.getItem("tema") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <title>Saray Berrio - Portafolio</title>
+  <!-- seo:inicio -->
+  <meta name="description" content="Ingeniera de Sistemas que diseña y construye interfaces. Diseño productos digitales en Figma y los llevo a código con React y Next.js. Me interesa entender el problema de punta a punta: desde los…">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Saray Berrio">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:title" content="Saray Berrio - Portafolio">
+  <meta property="og:description" content="Ingeniera de Sistemas que diseña y construye interfaces. Diseño productos digitales en Figma y los llevo a código con React y Next.js. Me interesa entender el problema de punta a punta: desde los…">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Saray Berrio - Portafolio">
+  <meta name="twitter:description" content="Ingeniera de Sistemas que diseña y construye interfaces. Diseño productos digitales en Figma y los llevo a código con React y Next.js. Me interesa entender el problema de punta a punta: desde los…">
+  <!-- seo:fin -->
+  <!-- Jost (equivalente libre de Futura) alojada en el proyecto: sin pedir nada a servidores externos -->
+  <link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="home">
+  <a class="skip" href="#main">Saltar al contenido</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <!-- ns:inicio -->
+    <noscript>
+      <div class="wrap">
+        <h1>Ingeniera de Sistemas que diseña y construye interfaces.</h1>
+        <p>Diseño productos digitales en Figma y los llevo a código con React y Next.js. Me interesa entender el problema de punta a punta: desde los datos y la lógica que lo sostienen hasta la interfaz que usa la persona final.</p>
+        <ul><li><a href="caso-evalua.html">Evalúa, exámenes en línea con supervisión</a>: Plataforma web para presentar y administrar exámenes de selección con verificación de identidad y cámara: 89 pantallas, gestión de procesos de selección, tres niveles de fidelidad y un sistema de diseño.</li></ul>
+        <p>Contacto: <a href="mailto:sarayberrio08@gmail.com">sarayberrio08@gmail.com</a></p>
+        <p>Este sitio usa JavaScript para mostrarse completo.</p>
+      </div>
+    </noscript>
+  <!-- ns:fin -->
+    <!-- Los bloques .sk son skeletons de carga: JavaScript los reemplaza al terminar de dibujar la página. -->
+    <section class="wrap hero" id="hero" aria-label="Presentación">
+      <div><span class="sk sk-title"></span><span class="sk sk-title"></span><span class="sk sk-title short"></span></div>
+      <div class="hero-side"><div style="width:100%"><span class="sk sk-line"></span><span class="sk sk-line"></span><span class="sk sk-line short"></span></div><div><span class="sk sk-btn"></span><span class="sk sk-btn"></span></div></div>
+    </section>
+
+    <section class="section" id="proyectos" aria-labelledby="t-proyectos">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="t-proyectos">Proyectos</h2>
+          <div class="chips" id="filters" role="group" aria-label="Filtrar proyectos"></div>
+        </div>
+        <div class="grid" id="grid" data-count="1"><div class="sk sk-card"></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre-mi" aria-labelledby="t-sobre">
+      <div class="wrap">
+        <div class="about-view">
+          <div class="section-head"><h2 id="t-sobre">Sobre mí</h2></div>
+          <div class="about">
+            <div class="about-left">
+              <div class="prose" id="about-text"><span class="sk sk-line"></span><span class="sk sk-line"></span><span class="sk sk-line short"></span></div>
+              <div id="scene"></div>
+            </div>
+            <div class="globe" id="globe"><div class="sk sk-globe"></div></div>
+          </div>
+        </div>
+        <p class="skills-intro intro" id="skills-intro"></p>
+        <div class="skills skills-row" id="skills"><span class="sk sk-line"></span><span class="sk sk-line short"></span></div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto" aria-labelledby="t-contacto">
+      <div class="wrap">
+        <div class="section-head"><h2 id="t-contacto">Contacto</h2></div>
+        <div id="contact"><span class="sk sk-line short"></span><span class="sk sk-title short"></span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <!-- Globo de "Sobre mí": d3-geo + topojson + datos de continentes, guardados en el proyecto (sin servicios externos) -->
+  <script src="assets/vendor/d3-array.min.js"></script>
+  <script src="assets/vendor/d3-geo.min.js"></script>
+  <script src="assets/vendor/topojson-client.min.js"></script>
+  <script src="assets/vendor/land-110m.js"></script>
+  <script src="js/globe.js"></script>
+<script src="js/scene.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="assets/evalua/dims.js"></script>
+  <script src="js/render.js"></script>
+</body>
+</html>
