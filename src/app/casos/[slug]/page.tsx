@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PROJECTS, SITE } from "@/data";
-import { plain } from "@/lib";
+import { plain } from "@/lib/format";
 import ProjectView from "@/components/ProjectView";
 
 type Params = { slug: string };

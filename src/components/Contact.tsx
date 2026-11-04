@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { SITE } from "@/data";
-import { plain } from "@/lib";
+import { plain } from "@/lib/format";
 import Ico from "./Ico";
 
 export default function Contact() {

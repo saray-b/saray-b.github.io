@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SITE, SITE_URL } from "@/data";
-import { plain } from "@/lib";
+import { plain } from "@/lib/format";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Lightbox from "@/components/Lightbox";

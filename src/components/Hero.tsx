@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useRef, type CSSProperties } from "react";
 import { SITE } from "@/data";
-import { rich } from "@/lib";
+import { rich } from "@/lib/format";
 
 // [área, archivo, pie de foto, desplazamiento con el cursor (px), retardo de entrada (s)]
 const PHOTOS: [string, string, string, number, number][] = [

@@ -1,39 +1,21 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { SITE } from "@/data";
-import { rich } from "@/lib";
+import { rich } from "@/lib/format";
+import { initScene } from "@/lib/scene";
+import { initGlobe } from "@/lib/globe";
 import Ico from "./Ico";
 import Skills from "./Skills";
-import { loadScripts } from "@/loadScripts";
-
-declare global {
-  interface Window {
-    initZombieScene?: (root: HTMLElement) => void;
-    initGlobe?: (root: HTMLElement, home: unknown) => void;
-  }
-}
 
 export default function About() {
   const scene = useRef<HTMLDivElement>(null);
   const globe = useRef<HTMLDivElement>(null);
 
-  // La escena SVG y el globo son código imperativo (public/legacy/*.js): se cargan una vez y se montan aquí.
+  // La escena SVG y el globo se dibujan de forma imperativa; cada uno devuelve su función de limpieza.
   useEffect(() => {
-    let cancelled = false;
-    loadScripts([
-      "/assets/vendor/d3-array.min.js",
-      "/assets/vendor/d3-geo.min.js",
-      "/assets/vendor/topojson-client.min.js",
-      "/assets/vendor/land-110m.js",
-      "/legacy/globe.js",
-      "/legacy/scene.js",
-    ]).then(() => {
-      if (cancelled) return;
-      const s = scene.current!, g = globe.current!;
-      if (!s.dataset.ready) { s.dataset.ready = "1"; window.initZombieScene?.(s); }
-      if (!g.dataset.ready) { g.dataset.ready = "1"; window.initGlobe?.(g, SITE.home); }
-    });
-    return () => { cancelled = true; };
+    const stopScene = initScene(scene.current!);
+    const stopGlobe = initGlobe(globe.current!, SITE.home);
+    return () => { stopScene(); stopGlobe(); };
   }, []);
 
   return (

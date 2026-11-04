@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { PROJECTS } from "@/data";
-import { imgProps } from "@/lib";
+import { imgProps } from "@/lib/format";
 
 export function TagList({ tags }: { tags: string[] }) {
   return <span className="tags">{tags.map((t) => <span key={t}>{t}</span>)}</span>;

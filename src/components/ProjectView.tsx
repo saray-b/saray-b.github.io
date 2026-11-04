@@ -2,7 +2,7 @@
 import Link from "next/link";
 import type { Block, Img, Project } from "@/data/types";
 import { PROJECTS } from "@/data";
-import { imgProps, rich } from "@/lib";
+import { imgProps, rich } from "@/lib/format";
 import { TagList } from "./ProjectsSection";
 import ProjectEffects from "./ProjectEffects";
 
