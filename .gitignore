@@ -1,5 +1,9 @@
 node_modules/
+.next/
+out/
 .impeccable/
 *.log
 Thumbs.db
 .DS_Store
+next-env.d.ts
+*.tsbuildinfo
