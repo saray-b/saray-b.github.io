@@ -37,7 +37,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preload" href="/assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </head>
       <body>
-        <a className="skip" href="#main">Saltar al contenido</a>
+        <a className="skip" href="#main">
+          Saltar al contenido
+        </a>
         <Header />
         {children}
         <Footer />

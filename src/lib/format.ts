@@ -1,7 +1,10 @@
 import { IMG_DIMS } from "@/data";
 
 const esc = (s: string) =>
-  String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string);
+  String(s).replace(
+    /[&<>"']/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string,
+  );
 
 /** Escapa y aplica **negrita**, *cursiva* y [pendientes] resaltados. Devuelve HTML seguro para dangerouslySetInnerHTML. */
 export const rich = (s: string) =>

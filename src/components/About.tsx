@@ -15,30 +15,49 @@ export default function About() {
   useEffect(() => {
     const stopScene = initScene(scene.current!);
     const stopGlobe = initGlobe(globe.current!, SITE.home);
-    return () => { stopScene(); stopGlobe(); };
+    return () => {
+      stopScene();
+      stopGlobe();
+    };
   }, []);
 
   return (
     <section className="section" id="sobre-mi" aria-labelledby="t-sobre">
       <div className="wrap">
         <div className="about-view">
-          <div className="section-head"><h2 id="t-sobre">Sobre mí</h2></div>
+          <div className="section-head">
+            <h2 id="t-sobre">Sobre mí</h2>
+          </div>
           <div className="about">
             <div className="about-left">
               <div className="prose" id="about-text">
-                {SITE.about.map((t, i) => <p key={i} dangerouslySetInnerHTML={{ __html: rich(t) }} />)}
+                {SITE.about.map((t, i) => (
+                  <p key={i} dangerouslySetInnerHTML={{ __html: rich(t) }} />
+                ))}
               </div>
               <div id="scene" ref={scene} />
             </div>
             <div className="globe" id="globe" ref={globe}>
               <div className="globe-stage">
-                <canvas className="globe-canvas" tabIndex={0} role="img" aria-label="Globo terráqueo. Arrástralo para girarlo." />
+                <canvas
+                  className="globe-canvas"
+                  tabIndex={0}
+                  role="img"
+                  aria-label="Globo terráqueo. Arrástralo para girarlo."
+                />
               </div>
-              <p className="globe-caption" aria-live="polite"><strong></strong> <span></span></p>
+              <p className="globe-caption" aria-live="polite">
+                <strong></strong> <span></span>
+              </p>
               <div className="globe-bar">
-                <button className="btn ghost globe-locate" type="button" hidden><Ico name="compass" size={16} /><span>Ubicarme</span></button>
+                <button className="btn ghost globe-locate" type="button" hidden>
+                  <Ico name="compass" size={16} />
+                  <span>Ubicarme</span>
+                </button>
               </div>
-              <p className="globe-note">Tu ubicación se estima por IP con un servicio externo (geojs.io). No guardo nada.</p>
+              <p className="globe-note">
+                Tu ubicación se estima por IP con un servicio externo (geojs.io). No guardo nada.
+              </p>
             </div>
           </div>
         </div>

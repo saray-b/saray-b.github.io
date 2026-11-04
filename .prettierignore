@@ -1,0 +1,7 @@
+node_modules
+.next
+out
+legacy
+public
+package-lock.json
+src/data/*.json

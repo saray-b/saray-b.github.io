@@ -20,7 +20,10 @@ export default function Hero() {
   useEffect(() => {
     const el = hero.current!;
     if (!matchMedia("(pointer: fine)").matches || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const set = (x: number, y: number) => { el.style.setProperty("--mx", x.toFixed(3)); el.style.setProperty("--my", y.toFixed(3)); };
+    const set = (x: number, y: number) => {
+      el.style.setProperty("--mx", x.toFixed(3));
+      el.style.setProperty("--my", y.toFixed(3));
+    };
     const move = (e: PointerEvent) => {
       const r = el.getBoundingClientRect();
       set(((e.clientX - r.left) / r.width - 0.5) * 2, ((e.clientY - r.top) / r.height - 0.5) * 2);
@@ -28,7 +31,10 @@ export default function Hero() {
     const leave = () => set(0, 0);
     el.addEventListener("pointermove", move);
     el.addEventListener("pointerleave", leave);
-    return () => { el.removeEventListener("pointermove", move); el.removeEventListener("pointerleave", leave); };
+    return () => {
+      el.removeEventListener("pointermove", move);
+      el.removeEventListener("pointerleave", leave);
+    };
   }, []);
 
   return (
@@ -39,15 +45,21 @@ export default function Hero() {
           <div className="np-foot">
             <p className="lede" dangerouslySetInnerHTML={{ __html: rich(SITE.lede) }} />
             <div className="actions">
-              <a className="btn" href="#proyectos">Ver proyectos</a>
-              <a className="btn ghost" href="#contacto">Contacto</a>
+              <a className="btn" href="#proyectos">
+                Ver proyectos
+              </a>
+              <a className="btn ghost" href="#contacto">
+                Contacto
+              </a>
             </div>
           </div>
         </div>
         <div className="np-photos">
           {PHOTOS.map(([area, file, cap, k, d]) => (
             <figure key={area} className={`ph ph-${area}`} style={{ "--k": k, "--d": `${d}s` } as CSSProperties}>
-              <div className="ph-img"><img src={`/assets/hero/${file}.svg`} alt="" loading="lazy" /></div>
+              <div className="ph-img">
+                <img src={`/assets/hero/${file}.svg`} alt="" loading="lazy" />
+              </div>
               <figcaption>{cap}</figcaption>
             </figure>
           ))}

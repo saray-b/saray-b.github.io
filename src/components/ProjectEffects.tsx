@@ -20,14 +20,19 @@ export default function ProjectEffects() {
 
     const links = [...document.querySelectorAll<HTMLAnchorElement>(".toc a")];
     const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => {
-        if (e.isIntersecting) links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
-      }),
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting)
+            links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+        }),
       { rootMargin: "-30% 0px -60% 0px" },
     );
     document.querySelectorAll(".chapter").forEach((s) => io.observe(s));
 
-    return () => { cleanups.forEach((f) => f()); io.disconnect(); };
+    return () => {
+      cleanups.forEach((f) => f());
+      io.disconnect();
+    };
   }, []);
 
   return null;

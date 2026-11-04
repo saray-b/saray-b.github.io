@@ -6,7 +6,14 @@ import { imgProps, rich } from "@/lib/format";
 import { TagList } from "./ProjectsSection";
 import ProjectEffects from "./ProjectEffects";
 
-const R = ({ html, as: Tag = "span", ...rest }: { html: string; as?: "span" | "p" | "div" | "h3" | "figcaption" | "dd" | "li" } & React.HTMLAttributes<HTMLElement>) => (
+const R = ({
+  html,
+  as: Tag = "span",
+  ...rest
+}: {
+  html: string;
+  as?: "span" | "p" | "div" | "h3" | "figcaption" | "dd" | "li";
+} & React.HTMLAttributes<HTMLElement>) => (
   <Tag {...(rest as object)} dangerouslySetInnerHTML={{ __html: rich(html) }} />
 );
 
@@ -38,25 +45,48 @@ function Figure(b: Img) {
 function BlockView({ b }: { b: Block }) {
   switch (b.t) {
     case "p":
-      return <div className="prose"><R as="p" html={b.text} /></div>;
+      return (
+        <div className="prose">
+          <R as="p" html={b.text} />
+        </div>
+      );
     case "ul":
-      return <ul className="bullets">{b.items.map((i, k) => <R key={k} as="li" html={i} />)}</ul>;
+      return (
+        <ul className="bullets">
+          {b.items.map((i, k) => (
+            <R key={k} as="li" html={i} />
+          ))}
+        </ul>
+      );
     case "image":
       return <Figure {...b} />;
     case "pair":
       return (
         <div className="compare" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,420px),1fr))" }}>
-          {b.items.map((i) => <Figure key={i.src} {...i} />)}
+          {b.items.map((i) => (
+            <Figure key={i.src} {...i} />
+          ))}
         </div>
       );
     case "compare":
       return (
         <div className="compare">
-          {b.items.map((i) => <div key={i.src}><span className="tag">{i.label}</span><Figure {...i} /></div>)}
+          {b.items.map((i) => (
+            <div key={i.src}>
+              <span className="tag">{i.label}</span>
+              <Figure {...i} />
+            </div>
+          ))}
         </div>
       );
     case "phones":
-      return <div className="phones">{b.items.map((i) => <Figure key={i.src} {...i} />)}</div>;
+      return (
+        <div className="phones">
+          {b.items.map((i) => (
+            <Figure key={i.src} {...i} />
+          ))}
+        </div>
+      );
     case "colors":
       return (
         <>
@@ -65,7 +95,11 @@ function BlockView({ b }: { b: Block }) {
               <h3 style={{ marginBottom: 12 }}>{g.name}</h3>
               <div className="swatch-grid">
                 {g.items.map(([n, h]) => (
-                  <div className="swatch" key={n}><i style={{ background: h }} /><b>{n}</b><span>{h}</span></div>
+                  <div className="swatch" key={n}>
+                    <i style={{ background: h }} />
+                    <b>{n}</b>
+                    <span>{h}</span>
+                  </div>
                 ))}
               </div>
             </div>
@@ -76,7 +110,10 @@ function BlockView({ b }: { b: Block }) {
       return (
         <div className="decisions">
           {b.items.map((d) => (
-            <article className="decision" key={d.title}><R as="h3" html={d.title} /><R as="p" html={d.text} /></article>
+            <article className="decision" key={d.title}>
+              <R as="h3" html={d.title} />
+              <R as="p" html={d.text} />
+            </article>
           ))}
         </div>
       );
@@ -95,39 +132,71 @@ export default function ProjectView({ project: p }: { project: Project }) {
       <header className="p-hero wrap">
         <div className="p-head">
           <h1>{p.title}</h1>
-          <Link className="back" href="/#proyectos">Todos los proyectos</Link>
+          <Link className="back" href="/#proyectos">
+            Todos los proyectos
+          </Link>
         </div>
         <R as="p" className="lede" html={p.summary} />
-        <div style={{ marginTop: 20 }}><TagList tags={p.tags} /></div>
+        <div style={{ marginTop: 20 }}>
+          <TagList tags={p.tags} />
+        </div>
         {p.tldr && (
           <dl className="tldr">
-            {p.tldr.map(([k, v]) => <div key={k}><dt>{k}</dt><R as="dd" html={v} /></div>)}
+            {p.tldr.map(([k, v]) => (
+              <div key={k}>
+                <dt>{k}</dt>
+                <R as="dd" html={v} />
+              </div>
+            ))}
           </dl>
         )}
         <dl className="facts">
           {p.facts.map(([k, v]) => (
             <div key={k}>
               <dt>{k}</dt>
-              {Array.isArray(v)
-                ? <dd><span className="spaced">{v.map((x) => <span key={x}>{x}</span>)}</span></dd>
-                : <R as="dd" html={v} />}
+              {Array.isArray(v) ? (
+                <dd>
+                  <span className="spaced">
+                    {v.map((x) => (
+                      <span key={x}>{x}</span>
+                    ))}
+                  </span>
+                </dd>
+              ) : (
+                <R as="dd" html={v} />
+              )}
             </div>
           ))}
         </dl>
-        <div className="p-cover"><Figure src={p.cover} alt={p.coverAlt} /></div>
+        <div className="p-cover">
+          <Figure src={p.cover} alt={p.coverAlt} />
+        </div>
         <div className="stats">
-          {p.stats.map(([n, l]) => <div className="stat" key={l}><b>{n}</b><span>{l}</span></div>)}
+          {p.stats.map(([n, l]) => (
+            <div className="stat" key={l}>
+              <b>{n}</b>
+              <span>{l}</span>
+            </div>
+          ))}
         </div>
       </header>
       <div className="wrap layout">
         <nav className="toc" aria-label="Contenido">
-          <ol>{p.chapters.map((c) => <li key={c.id}><a href={`#${c.id}`}>{c.title}</a></li>)}</ol>
+          <ol>
+            {p.chapters.map((c) => (
+              <li key={c.id}>
+                <a href={`#${c.id}`}>{c.title}</a>
+              </li>
+            ))}
+          </ol>
         </nav>
         <div>
           {p.chapters.map((c) => (
             <section className="chapter" id={c.id} key={c.id}>
               <h2>{c.title}</h2>
-              {c.blocks.map((b, k) => <BlockView key={k} b={b} />)}
+              {c.blocks.map((b, k) => (
+                <BlockView key={k} b={b} />
+              ))}
             </section>
           ))}
         </div>
