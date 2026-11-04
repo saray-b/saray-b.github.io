@@ -3,7 +3,10 @@ import { test, expect } from "@playwright/test";
 test("la portada muestra el titular y enlaza al caso de estudio", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Ingeniera de Sistemas");
-  await page.getByRole("link", { name: /Evalúa/ }).first().click();
+  await page
+    .getByRole("link", { name: /Evalúa/ })
+    .first()
+    .click();
   await expect(page).toHaveURL(/\/casos\/evalua\/$/);
   await expect(page.locator(".chapter")).toHaveCount(8);
 });
@@ -37,3 +40,15 @@ test("una ruta inexistente muestra la página 404", async ({ page }) => {
   expect(res?.status()).toBe(404);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("no existe");
 });
+
+for (const width of [360, 390]) {
+  test(`sin desbordamiento horizontal en móvil (${width}px)`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 844 });
+    for (const url of ["/", "/casos/evalua/"]) {
+      await page.goto(url);
+      await page.waitForLoadState("networkidle");
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      expect(overflow, `${url} a ${width}px`).toBeLessThanOrEqual(0);
+    }
+  });
+}
