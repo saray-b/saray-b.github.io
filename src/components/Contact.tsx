@@ -31,7 +31,7 @@ export default function Contact() {
             <a className="btn" href={`mailto:${email}?subject=${encodeURIComponent("Hola, vi tu portafolio")}`}>
               Escribirme
             </a>
-            <button className="btn ghost" type="button" onClick={copy}>
+            <button className="btn ghost" type="button" data-evento="contacto/copiar-correo" onClick={copy}>
               {label}
             </button>
           </div>

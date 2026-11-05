@@ -9,7 +9,7 @@ Portafolio de diseño de producto y desarrollo front-end, con estilo editorial e
 - Portada con proyectos, sobre mí y contacto.
 - Caso de estudio de **Evalúa**, una plataforma de selección de personal para el sector público (información anonimizada).
 - Modo claro por defecto y modo oscuro con un interruptor.
-- Sin cookies ni analítica.
+- Sin cookies. Estadísticas anónimas de visitas con GoatCounter (respeta Do Not Track).
 
 ## Tecnologías
 

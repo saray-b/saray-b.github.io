@@ -7,7 +7,7 @@ export default function Footer() {
         <span>
           © {new Date().getFullYear()} {SITE.name}
         </span>
-        <span>Sin cookies ni analítica.</span>
+        <span>Sin cookies. Estadísticas anónimas de visitas.</span>
       </div>
     </footer>
   );

@@ -42,6 +42,7 @@ export default function Header() {
           <button
             className="theme-toggle"
             id="theme-toggle"
+            data-evento="tema/cambiar"
             type="button"
             aria-label="Modo oscuro"
             aria-pressed={dark}

@@ -52,3 +52,12 @@ for (const width of [360, 390]) {
     }
   });
 }
+
+test("la portada no produce errores de JavaScript", async ({ page }) => {
+  const errores: string[] = [];
+  page.on("pageerror", (e) => errores.push(e.message));
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await page.waitForTimeout(1000);
+  expect(errores).toEqual([]);
+});

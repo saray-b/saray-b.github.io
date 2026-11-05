@@ -5,6 +5,7 @@ import { plain } from "@/lib/format";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Lightbox from "@/components/Lightbox";
+import Analytics from "@/components/Analytics";
 
 const description = `${plain(SITE.headline)} ${plain(SITE.lede)}`.slice(0, 200).replace(/\s+\S*$/, "…");
 
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Footer />
         <Lightbox />
+        <Analytics />
       </body>
     </html>
   );
